@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="asteroid"
+            type="com.udacity.asteroidradar.models.Asteroid" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Widget.MaterialComponents.CardView"
+        app:cardBackgroundColor="@android:color/black"
+        app:cardCornerRadius="0dp"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/asteroid_codename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/asteroid_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:asteroidCodename="@{asteroid.codename}"
+                tools:text="Asteroid" />
+
+            <TextView
+                android:id="@+id/asteroid_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/asteroid_codename"
+                android:textColor="@android:color/white"
+                app:asteroidCloseApproachDate="@{asteroid.closeApproachDate}"
+                tools:text="10-10-2021" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_status_normal"
+                app:statusIcon="@{asteroid.potentiallyHazardous}"
+                android:contentDescription="@{asteroid.codename}" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
