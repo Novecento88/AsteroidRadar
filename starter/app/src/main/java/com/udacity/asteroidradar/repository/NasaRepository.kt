@@ -19,10 +19,6 @@ class NasaRepository(private val database: NasaDatabase) {
     val status: LiveData<NasaApiStatus>
         get() = _status
 
-    val asteroids: LiveData<List<Asteroid>> = Transformations.map(database.asteroidDao.getAsteroids()){asteroids ->
-        asteroids.asDomainModel()
-    }
-
     fun getAsteroidsSelection(filter: AsteroidFilter) : LiveData<List<Asteroid>> {
         when (filter) {
             AsteroidFilter.SHOW_TODAY -> {
